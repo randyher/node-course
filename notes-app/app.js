@@ -1,3 +1,2 @@
-const fs = require("fs");
-
-fs.writeFileSync("notes.txt", "This file was created by node");
+// const notes = require("./notes");
+// console.log(notes());
