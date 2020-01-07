@@ -1,4 +1,11 @@
 const notes = require("./notes");
 const validator = require("validator");
+const chalk = require("chalk");
 
-console.log(validator.isEmail("randy@gmail..codm"));
+const command = process.argv[2];
+
+if (command === "add") {
+  console.log("add");
+} else if (command === "remove") {
+  console.log("remove");
+}
