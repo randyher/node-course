@@ -28,17 +28,24 @@ yargs.command({
 });
 //
 
-//Create Add Command
+//Create Remove Command
 yargs.command({
   command: "remove",
   describe: "Removes a new note",
-  handler: function() {
-    console.log("Removing a note!");
+  builder: {
+    title: {
+      describe: "Note Title",
+      demandOption: true,
+      type: "string"
+    }
+  },
+  handler: function(argv) {
+    notes.removeNote(argv.title);
   }
 });
 //
 
-//Create Add Command
+//Create List Command
 yargs.command({
   command: "list",
   describe: "List out all note",
@@ -48,7 +55,7 @@ yargs.command({
 });
 //
 
-//Create Add Command
+//Create Read Command
 yargs.command({
   command: "read",
   describe: "Reading note",

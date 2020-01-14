@@ -22,6 +22,10 @@ const addNote = function(title, body) {
   }
 };
 
+const removeNote = function(title) {
+  console.log("Remove note:", title);
+};
+
 const loadNotes = function() {
   try {
     const dataBuffer = fs.readFileSync("notes.json");
@@ -39,5 +43,6 @@ const saveNotes = function(notes) {
 
 module.exports = {
   getNotes: getNotes,
-  addNote: addNote
+  addNote: addNote,
+  removeNote: removeNote
 };
