@@ -5,26 +5,38 @@ const url =
 const mapBoxUrl =
   "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoicmFuZHloZXIiLCJhIjoiY2s1cGZjamR0MHducTNtcGN4NXJvOHJ4cCJ9.mR7svf2e3Qm_owtLmQZAOw&limit=1";
 
-request({ url: url, json: true }, (error, response) => {
-  if (error) {
-    console.log("Unable to connect to weather services!");
-  } else if (response.body.error) {
-    console.log("Unable to find location!");
-  } else {
-    const { temperature, precipProbability } = response.body.currently;
-    console.log(
-      `It is currently ${temperature} degrees outside. There is a ${precipProbability}% chance of rain`
-    );
-  }
-});
+// request({ url: url, json: true }, (error, response) => {
+//   if (error) {
+//     console.log("Unable to connect to weather services!");
+//   } else if (response.body.error) {
+//     console.log("Unable to find location!");
+//   } else {
+//     const { temperature, precipProbability } = response.body.currently;
+//     console.log(
+//       `It is currently ${temperature} degrees outside. There is a ${precipProbability}% chance of rain`
+//     );
+//   }
+// });
 
-request({ url: mapBoxUrl, json: true }, (error, response) => {
-  if (error) {
-    console.log("Unable to connect to location services!");
-  } else if (response.body.features.length === 0) {
-    console.log("Unable to find location!");
-  } else {
-    const { features } = response.body;
-    console.log(features[0].center);
-  }
-});
+// request({ url: mapBoxUrl, json: true }, (error, response) => {
+//   if (error) {
+//     console.log("Unable to connect to location services!");
+//   } else if (response.body.features.length === 0) {
+//     console.log("Unable to find location!");
+//   } else {
+//     const { features } = response.body;
+//     console.log(features[0].center);
+//   }
+// });
+
+const geocode = (address, callback) => {
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+    address
+  )}.json?access_token=pk.eyJ1IjoicmFuZHloZXIiLCJhIjoiY2s1cGZjamR0MHducTNtcGN4NXJvOHJ4cCJ9.mR7svf2e3Qm_owtLmQZAOw&limit=1`;
+
+  request({ url: url, json: true }, () => {
+    console.log("yo");
+  });
+};
+
+geocode("Bronx", (error, data) => {});
