@@ -34,8 +34,12 @@ const geocode = (address, callback) => {
     address
   )}.json?access_token=pk.eyJ1IjoicmFuZHloZXIiLCJhIjoiY2s1cGZjamR0MHducTNtcGN4NXJvOHJ4cCJ9.mR7svf2e3Qm_owtLmQZAOw&limit=1`;
 
-  request({ url: url, json: true }, () => {
-    console.log("yo");
+  request({ url: url, json: true }, (error, response) => {
+    if (error) {
+      callback("Unable to connect to location services", undefined);
+    } else if (response.body.features.length === 0) {
+      callback("Unable to find location", undefined);
+    }
   });
 };
 
