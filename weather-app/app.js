@@ -1,4 +1,5 @@
 const request = require("request");
+const geocode = require("./utils/geocode");
 const url =
   "https://api.darksky.net/forecast/ddfc0938764a93974f8b2cb846cf2b54/37.8267,-122.4233";
 
@@ -29,18 +30,7 @@ const mapBoxUrl =
 //   }
 // });
 
-const geocode = (address, callback) => {
-  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
-    address
-  )}.json?access_token=pk.eyJ1IjoicmFuZHloZXIiLCJhIjoiY2s1cGZjamR0MHducTNtcGN4NXJvOHJ4cCJ9.mR7svf2e3Qm_owtLmQZAOw&limit=1`;
-
-  request({ url: url, json: true }, (error, response) => {
-    if (error) {
-      callback("Unable to connect to location services", undefined);
-    } else if (response.body.features.length === 0) {
-      callback("Unable to find location", undefined);
-    }
-  });
-};
-
-geocode("Bronx", (error, data) => {});
+geocode("Boston", (error, data) => {
+  console.log("Data", data);
+  console.log("Error", error);
+});
