@@ -30,7 +30,7 @@ const mapBoxUrl =
 //   }
 // });
 
-geocode("Boston", (error, data) => {
+geocode("Brooklyn", (error, data) => {
   console.log("Data", data);
   console.log("Error", error);
 });
