@@ -8,7 +8,10 @@ app.set("view engine", "hbs");
 app.use(express.static(publicDirPath));
 
 app.get("", (req, res) => {
-  res.render("index");
+  res.render("index", {
+    title: "Weather",
+    name: "Randy"
+  });
 });
 
 app.get("/weather", (req, res) => {
