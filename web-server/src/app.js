@@ -38,7 +38,24 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  res.send({ forecast: "HOT", location: "Brooklyn" });
+  if (!req.query.address) {
+    return res.send({ error: "Require an address" });
+  }
+
+  res.send({
+    forecast: "HOT",
+    location: "Brooklyn",
+    address: req.query.address
+  });
+});
+
+app.get("/products", (req, res) => {
+  if (!req.query.search) {
+    return res.send({ error: "Require a search query" });
+  }
+  res.send({
+    products: []
+  });
 });
 
 app.get("/help/*", (req, res) => {
