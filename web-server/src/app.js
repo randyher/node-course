@@ -41,6 +41,20 @@ app.get("/weather", (req, res) => {
   res.send({ forecast: "HOT", location: "Brooklyn" });
 });
 
+app.get("/help/*", (req, res) => {
+  res.render("error", {
+    error: "Help article not found",
+    name: "Randy"
+  });
+});
+
+app.get("*", (req, res) => {
+  res.render("error", {
+    error: "404 Page Not Found",
+    name: "Randy"
+  });
+});
+
 app.listen(3000, () => {
   console.log("It's working");
 });
