@@ -42,14 +42,16 @@ app.get("/weather", (req, res) => {
 });
 
 app.get("/help/*", (req, res) => {
-  res.render("error", {
+  res.render("404", {
+    title: "404",
     error: "Help article not found",
     name: "Randy"
   });
 });
 
 app.get("*", (req, res) => {
-  res.render("error", {
+  res.render("404", {
+    title: "404",
     error: "404 Page Not Found",
     name: "Randy"
   });
