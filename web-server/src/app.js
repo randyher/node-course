@@ -1,14 +1,17 @@
 const path = require("path");
-
 const express = require("express");
+const hbs = require("hbs");
 const app = express();
+
 // Define Paths for Express Config
 const publicDirPath = path.join(__dirname, "../public/");
 const viewsPath = path.join(__dirname, "../templates/views");
+const partialsPath = path.join(__dirname, "../templates/partials");
 
 // Set Up Handle Bars & Views Location
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
+hbs.registerPartials(partialsPath);
 
 // Set Up Static Directory to Serve
 app.use(express.static(publicDirPath));
